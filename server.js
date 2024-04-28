@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true })); // Corrected function name to 'app.use'
 
-mongoose.connect('mongodb://127.0.0.1:27017/Login');
+mongoose.connect('mongodb://localhost:27017');
 const db = mongoose.connection;
 db.once('open', () => {
     console.log('Mongoose connection successfully established');
