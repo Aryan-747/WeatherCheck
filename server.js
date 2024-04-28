@@ -3,6 +3,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const port = 3000;
 
+const notifier = require('node-notifier');
+
 const app = express();
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true })); // Corrected function name to 'app.use'
@@ -35,7 +37,15 @@ app.post('/signup', async (req, res) => {
     });
     await user.save();
     console.log(user);
-    res.send("Form submitted");
+    //res.send("Form submitted");
+    notifier.notify({
+        title: 'Submit',
+        message: 'Account Created Successfully!',
+        //icon: path.join(__dirname, 'icon.jpg'),
+        sound: true,
+        wait: true
+      });
+    res.redirect('index.html'); 
 });
 
 app.listen(port, () => {

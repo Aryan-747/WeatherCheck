@@ -1,9 +1,13 @@
 {
   "dependencies": {
+    "alert": "^6.0.1",
     "bcrypt": "^5.1.1",
     "express": "^4.19.2",
     "mongoose": "^8.3.2",
+    "node-notifier": "^10.0.1",
     "nodemon": "^3.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "popup": "^0.0.3",
+    "popups": "^1.1.3"
   }
 }
