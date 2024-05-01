@@ -7,7 +7,7 @@ const notifier = require('node-notifier');
 
 const app = express();
 app.use(express.static(__dirname));
-app.use(express.urlencoded({ extended: true })); // Corrected function name to 'app.use'
+app.use(express.urlencoded({ extended: true })); 
 
 mongoose.connect('mongodb://localhost:27017');
 const db = mongoose.connection;
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     confirmPassword: String
 });
 
-const User = mongoose.model('User', userSchema); // Corrected model name to 'User'
+const User = mongoose.model('User', userSchema); 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -41,7 +41,6 @@ app.post('/signup', async (req, res) => {
     notifier.notify({
         title: 'Submit',
         message: 'Account Created Successfully!',
-        //icon: path.join(__dirname, 'icon.jpg'),
         sound: true,
         wait: true
       });
@@ -49,18 +48,17 @@ app.post('/signup', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('listening on port');
+    console.log(`listening on port ${port}`);
 });
 
 // Handle user login
 app.post('/login', async (req, res) => {
     const { username, confirmPassword } = req.body;
     try {
-        // Perform authentication logic here
-        // For simplicity, let's assume authentication is successful if username and password match
+      
         const user = await User.findOne({ username, confirmPassword });
         if (user) {
-            // Redirect to another page upon successful login
+            // Redirect to another page upon successful lgin
             res.status(401).send('Invalid username or password');
         } else {
            
