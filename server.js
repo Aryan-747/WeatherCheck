@@ -43,7 +43,8 @@ app.post('/signup', async (req, res) => {
         message: 'Account Created Successfully!',
         sound: true,
         wait: true
-      });
+      
+    });
     res.redirect('index.html'); 
 });
 
